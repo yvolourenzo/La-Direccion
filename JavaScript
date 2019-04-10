@@ -1,0 +1,61 @@
+ //Testar Conexão do seu dispositivo
+ $(document).on('click','#conexao',function(){ 
+  function checkConnection() {
+    var networkState = navigator.connection.type;
+
+    var states = [] ;
+    states[Connection.UNKNOWN]  = 'Desconhecido conectado';
+    states[Connection.ETHERNET] = 'Ethernet conectado';
+    states[Connection.WIFI]     = 'WiFi conectado';
+    states[Connection.CELL_2G]  = 'Cell 2G conectado';
+    states[Connection.CELL_3G]  = 'Cell 3G conectado';
+    states[Connection.CELL_4G]  = 'Cell 4G conectado';
+    states[Connection.CELL]     = 'Cell generic conectado';
+    states[Connection.NONE]     = 'Sem conexão';
+
+    alert('Tipo de Conexão: ' + states[networkState]);
+}
+  
+checkConnection();
+});
+
+//Código para exibir o mapa
+
+  window.onload = function(){
+
+    //configurando plugin de notificações
+  document.addEventListener("deviceready", onDeviceReady, false);
+  function onDeviceReady() {
+      console.log(navigator.notification);
+  }
+
+  //configurando plugin de geolocalização
+  document.addEventListener("deviceready", onDeviceReady, false);
+  function onDeviceReady() {
+    console.log("navigator.geolocation works well");
+  }
+
+    var onSuccess = function(position) {
+
+      L.mapquest.key = 'SldE1iVQuMLAumXSosBqwsMgtU5qBeXl';
+
+      var map = L.mapquest.map('map', {
+      center: [position.coords.latitude, position.coords.longitude],//Configurando coordenadas recebidas pelo gps
+      layers: L.mapquest.tileLayer('map'),
+      zoom: 12
+      });
+
+      map.addControl(L.mapquest.control());
+    };
+
+    //função de erro
+    function onError(error){
+      navigator.notification.alert('code: '    + error.code    + '\n' +
+                                  'message: ' + error.message + '\n');
+    }
+
+    //Pegando coordenadas atuais
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+  }
+
+ 
