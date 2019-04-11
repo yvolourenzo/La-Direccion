@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="components/jquery-3.3.1.min.js"></script>
+  <script src="components/bootstrap.min.js"></script>
+  <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+
+  <script src="components/acao.js"></script><!--Funções da página-->
+
+</head>
+<body style=" background-image:url('css/mapa.jpg');">
+    <div class="container">
+      <!-- nav bar -->
+
+      <div class="row" id="titulo">
+        <div class="col-xs-12" class="barra">
+          <h1>La Dirección</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+           </div>
+          </div>
+
+            <button class="btn btn-warning" data-toggle="modal" data-target="#mapa">Olhar Mapa</button>
+
+            <button class = "btn btn-warning" id="conexao">Testar Conexão</button> 
+            </div>  
+
+        <div id="mapa" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Localização</h4>
+        </div>
+
+        <div class="modal-body">
+
+          <div id="map"></div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-danger" data-dismiss="modal">Fechar</button>
+        </div>
+
+      </div>      
+    </div>
+  </div>
+</body>
+</html>
